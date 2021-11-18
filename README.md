@@ -45,6 +45,7 @@ g++ -std=c++2a *.cpp && ./a.out
     - Input ULD ID
     - ID
     - EXAMPLE: `626`
+    - Adds ULD to plane
 7. Remove Packages from ULD
     - Prints the 10 most recent packages added to ULD to simulate not being able to see the packages in the very back of the ULD
     - Input package information 
