@@ -15,14 +15,16 @@ g++ -std=c++2a *.cpp && ./a.out
 ```
 
 # Commands
-1. `Scan Packages`
+1. Scan Packages
     - Input package information 
     - ID,ZIPCODE,WEIGHT,VOLUME
+    - EXAMPLE
     - `412312,12345,5,2`
-3. `Scan new ULD`
-4. `Scan LIB Packages`
-5. `Send off a Plane`
-6. `Add ULD to Plane`
-7. `Remove Packages from ULD`
-8. `Run Tests`
+    - Tells user which ULD to add package to
+3. Scan new ULD
+4. Scan LIB Packages
+5. Send off a Plane
+6. Add ULD to Plane
+7. Remove Packages from ULD
+8. Run Tests
     - NOT COMPLETE
