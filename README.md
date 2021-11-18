@@ -36,3 +36,6 @@ g++ -std=c++2a *.cpp && ./a.out
     - NOT COMPLETE
 
 # Questions? Comments? Concerns?
+Email me!
+`escales@email.sc.edu`
+`evan.m.scales@gmail.com`
