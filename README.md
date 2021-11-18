@@ -55,6 +55,11 @@ g++ -std=c++2a *.cpp && ./a.out
 9. Run Tests
     - NOT COMPLETE
 
+# How to make this better
+1. Add hazmat packages
+2. When adding ULD to plane, tell what position it will be in
+3. In order to do that need to create types of planes due to differemt loading processes of planes
+
 # Questions? Comments? Concerns?
 Email me!
 
