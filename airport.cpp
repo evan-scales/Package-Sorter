@@ -133,123 +133,6 @@ void Airport::addPackage(Package & p) {
         }
     }
 }
-// void Airport::addPackage(Package & p) {
-//     std::string dest = determinePlane(p);
-//     // std::cout << "Dest: " << dest << "\n";
-
-//     std::queue<Container> *poop = &rot.at(dest);
-//     if (poop->empty()) {
-//         std::cout << "No ULDs in rotation\n";
-//         return;
-//     }
-//     Container *front = &poop->front();
-//     Plane *plane = &planes.at(dest);
-
-//     if(front->canAdd(p)) {
-//         front->addToContainer(p);
-//         poop->push((*front));
-//         poop->pop();
-//         std::cout << "\nAdd package " << p.getID() << " to container " << front->getID() << " heading to " << dest << "\n";
-//         std::cout << "---------------CONTAINER STATS---------------\n";
-//         std::cout << "Container number: " << front->getID() << "\n";
-//         std::cout << "Weight of container: " << front->getWeight() << "\tMax: " << front->getMaxWeight() << "\n";
-//         std::cout << "Volume of container: " << front->getVolume() << "\tMax: " << front->getMaxVolume() << "\n";
-//         std::cout << "---------------------------------------------\n\n";
-//     } else {
-//         std::cout << "\nCan't add package " << p.getID() << " to container " << front->getID() << " due to weight or volume\n";
-//         std::cout << "Add container " << front->getID() << " to plane (yes) or (no)\n";
-//         std::cout << "---------------CONTAINER STATS---------------\n";
-//         std::cout << "Container number: " << front->getID() << "\n";
-//         std::cout << "Weight of container: " << front->getWeight() << "\tMax: " << front->getMaxWeight() << "\n";
-//         std::cout << "Volume of container: " << front->getVolume() << "\tMax: " << front->getMaxVolume() << "\n";
-//         std::cout << "---------------------------------------------\n\n";
-//         std::string input;
-//         std::cin >> input;
-//         transform(input.begin(), input.end(), input.begin(), ::toupper);
-//         if (input == "YES") {
-//             // Plane *addTo = &planes.at(dest);
-//             int over = plane->canAdd((*front));
-//             if (over == -1) {
-//                 plane->addToPlane((*front));
-//                 poop->pop();
-//                 if (plane->getOpenPOS() != 0) {
-//                     std::cout << "Scan new ULD CURRENTWEIGHT,MAXWEIGHT,ID,MAXVOLUME\n";
-//                     std::string input;
-//                     std::cin >> input;
-//                     std::string token = "";
-//                     std::stringstream s_line(input);
-//                     std::vector<std::string> vect;
-//                     bool stop = false;
-//                     int cw, mw, id, mv;
-//                     while (!stop) {
-//                         while (getline(s_line, token, ','))
-//                             vect.push_back(token);
-//                         cw = std::stoi(vect[0]);
-//                         mw = std::stoi(vect[1]);
-//                         id = std::stoi(vect[2]);
-//                         mv = std::stoi(vect[3]);
-//                         if (conIDSet.find(id) == conIDSet.end()) {
-//                             stop = true;
-//                             conIDSet.insert(id);
-//                         }
-//                         else {
-//                             std::cout << "ULD already in use, get a new ULD\n";
-//                         }
-//                     }
-//                     Container newCon(cw, mw, id, mv);
-//                     poop->push(newCon);
-//                 }
-//                 std::cout <<"succ";
-//             } else {
-//                 std::cout << "\nCan't add ULD " << front->getID() << " to plane heading to " << plane->getDest() << " due to weight\n";
-//                 std::cout << "Overweight by " << over << " lbs\n";
-//                 std::cout << "Remove packages until no longer overweight\n";
-//                 std::cout << "Removed packages will be moved to LIB\n\n";
-
-//                 while (over > 0) {
-//                     front->printContainerRecent();
-//                     std::cout << "\nScan package to remove it ID,ZIPCODE,WEIGHT,VOLUME\n";
-
-//                     std::string input;
-//                     std::cin >> input;
-//                     std::string token = "";
-//                     std::stringstream s_line(input);
-//                     std::vector<std::string> vect;
-//                     while (getline(s_line, token, ','))
-//                         vect.push_back(token);
-
-
-//                     std::string id = vect[0];
-//                     std::string zip = vect[1];
-//                     int weight = std::stoi(vect[2]);
-//                     int volume = std::stoi(vect[3]);
-
-//                     Package nP(id, zip, weight, volume);
-
-//                     if (front->removePackage(p))
-//                         over -= p.getWeight();
-//                 }
-//             }
-//         } else {
-//             poop->push((*front));
-//             poop->pop();
-//         }
-//         // ADD CONTAINER TO PLANE
-//         // ADD NEW CONTAINER TO ROT
-//         // Scan package again
-//         if (p.getTIR() == cap) {
-//             std::cout << "Cant add package to any ULD, moving to LIB\n";
-//             lib.push_back(p);
-//         } else {
-//             p.upTIR();
-//             addPackage(p);
-//         }
-//     }
-
-
-//     // std::cout << "Container number: " << front.getID() << "\n";
-//     // std::cout << "Weight of container: " << front.getWeight() << "\n";
-// }
 std::string Airport::determinePlane(Package & p) {
     std::string dest;
     std::string zip = p.getZip();
@@ -390,15 +273,20 @@ void Airport::scanULD() { // DONE
     Plane *plane = &planes.at(dest);
     // std::cout << "rot size: " << rotP->size() << "\n";
     if (plane->getOpenPOS() != 0 && rotP->size() != cap) {
-        std::cout << "Scan new ULD CURRENTWEIGHT,MAXWEIGHT,ID,MAXVOLUME\n";
-        std::string input;
-        std::cin >> input;
-        std::string token = "";
-        std::stringstream s_line(input);
-        std::vector<std::string> vect;
         bool stop = false;
         int cw, mw, id, mv;
         while (!stop) {
+            std::cout << "Scan new ULD CURRENTWEIGHT,MAXWEIGHT,ID,MAXVOLUME\n";
+            std::cout << "Enter O(or o) to stop and return to options\n";
+            std::string input;
+            std::cin >> input;
+            if (input == "O" || input == "o") {
+                std::cout << "Returning to menu\n";
+                return;
+            }
+            std::string token = "";
+            std::stringstream s_line(input);
+            std::vector<std::string> vect;
             while (getline(s_line, token, ','))
                 vect.push_back(token);
             cw = std::stoi(vect[0]);
@@ -408,6 +296,7 @@ void Airport::scanULD() { // DONE
             if (conIDSet.find(id) == conIDSet.end()) {
                 stop = true;
                 conIDSet.insert(id);
+                std::cout << "ULD succuesfully scanned\n";
             }
             else {
                 std::cout << "ULD already in use, get a new ULD\n";
