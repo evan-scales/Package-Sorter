@@ -13,25 +13,25 @@ Package::Package(std::string nID, std::string nZ, int nW, int nV) {
     volume = nV;
     tir = 0;
 }
-void Package::printPackage() {
+const void Package::printPackage() {
     std::cout << "Tracking number: " << id << " Shipping to (zipcode): " << zipcode << " Weight: " << weight << " Volume (cubic feet): " << volume << "\n";
 }
-std::string Package::getID() {
+const std::string Package::getID() {
     return id;
 }
-bool Package::getHazmat() {
+const bool Package::getHazmat() {
     return hazmat;
 }
-std::string Package::getZip() {
+const std::string Package::getZip() {
     return zipcode;
 }
-int Package::getWeight() {
+const int Package::getWeight() {
     return weight;
 }
-int Package::getVolume() {
+const int Package::getVolume() {
     return volume;
 }
-int Package::getTIR() {
+const int Package::getTIR() {
     return tir;
 }
 void Package::upTIR() {
@@ -43,4 +43,7 @@ bool Package::operator==(const Package & rhs) const {
         return true;
     else
         return false;
+}
+void Package::resetTIR() {
+    tir = 0;
 }
