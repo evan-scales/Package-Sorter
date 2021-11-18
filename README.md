@@ -9,3 +9,9 @@ g++ *.cpp && ./a.out
 // Mac
 g++ -std=c++2a *.cpp && ./a.out
 ```
+
+# Commands
+1. ```
+
+  qdwd
+  ```
