@@ -21,7 +21,7 @@ g++ -std=c++2a *.cpp && ./a.out
     - EXAMPLE
     - `412312,12345,5,2`
     - Tells user which ULD to add package to
-3. Scan new ULD
+2. Scan new ULD
     - ULDs are stored in rotations of ULDs corresponding to their destination
     - Rotations have a max capacity 
     - Prints all destinations the air hub sends planes to
@@ -32,10 +32,31 @@ g++ -std=c++2a *.cpp && ./a.out
     - CURRENTWEIGHT,MAXWEIGHT,ID,MAXVOLUME
     - EXAMPLE
     - `200,5000,2337,430`
-5. Scan LIB Packages
-6. Send off a Plane
-7. Add ULD to Plane
-8. Remove Packages from ULD
+3. Scan LIB Packages
+    - If a package can't be added to a ULD it is moved to LIB
+    - User can look at these packages and try to add them to a ULD again
+    - Input package information 
+    - ID,ZIPCODE,WEIGHT,VOLUME
+    - EXAMPLE
+    - `412312,12345,5,2`
+4. Send off a Plane
+    - Print all planes and their stats
+    - Enter a planes ID to send it to its destination
+    - EXAMPLE
+    - `1`
+5. Add ULD to Plane
+    - Prints all ULDs in rotation
+    - Input ULD ID
+    - ID
+    - EXAMPLE
+    - `626`
+7. Remove Packages from ULD
+    - Prints the 10 most recent packages added to ULD to simulate not being able to see the packages in the very back of the ULD
+    - Input package information 
+    - ID,ZIPCODE,WEIGHT,VOLUME
+    - EXAMPLE
+    - `412312,12345,5,2`
+    - Removed packages are moved to LIB
 9. Run Tests
     - NOT COMPLETE
 
