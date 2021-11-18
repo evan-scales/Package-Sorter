@@ -37,5 +37,7 @@ g++ -std=c++2a *.cpp && ./a.out
 
 # Questions? Comments? Concerns?
 Email me!
+
 `escales@email.sc.edu`
+
 `evan.m.scales@gmail.com`
