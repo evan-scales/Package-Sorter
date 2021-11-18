@@ -21,6 +21,11 @@ class Airport {
     void setCLT();
     void initRot();
     void printAllContainers();
+    void scanLIB();
+    void addULDToPlane(int choice, int sID = -1);
+    void sendPlane();
+    void scanULD();
+    void removePULD(int choice, int sID = -1);
 
  private:
    // std::vector<Plane> planes;

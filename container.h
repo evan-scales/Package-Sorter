@@ -14,15 +14,17 @@ class Container {
    //  bool operator<(const Container &) const;
 
     // Member functions
-    void printContainerRecent();
-    void addToContainer(Package);
-    int getID();
-    int getWeight();
-    int getMaxWeight();
-    int getMaxVolume();
-    int getVolume();
-    bool canAdd(Package);
-    bool removePackage(Package &);
+    const void printContainerRecent();
+    const void printContainerStats();
+    void addToContainer(Package &);
+    const int getID();
+    const int getWeight();
+    const int getMaxWeight();
+    const int getMaxVolume();
+    const int getVolume();
+    const bool canAdd(Package &);
+    void removePackage(Package &);
+    bool isEmpty();
 
  private:
     int currentWeight, maxWeight, id, currentVolume, maxVolume;

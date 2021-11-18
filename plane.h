@@ -12,11 +12,12 @@ class Plane {
     explicit Plane(int, int, int, std::string);
 
     // Member functions
-    void printPlane();
-    std::string getDest();
+    const void printPlane();
+    const std::string getDest();
     int getOpenPOS();
     void addToPlane(Container &);
-    int canAdd(Container &);
+    const int canAdd(Container &);
+    int getID();
 
 
  private:

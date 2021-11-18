@@ -13,14 +13,15 @@ class Package {
     // ~Package();
 
     // // Member Functions
-    std::string getID();
-    std::string getZip();
-    int getWeight();
-    int getVolume();
-    bool getHazmat();
-    void printPackage();
-    int getTIR();
+    const std::string getID();
+    const std::string getZip();
+    const int getWeight();
+    const int getVolume();
+    const bool getHazmat();
+    const void printPackage();
+    const int getTIR();
     void upTIR();
+    void resetTIR();
 
     bool operator==(const Package &) const;
 

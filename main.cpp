@@ -25,7 +25,23 @@ int main(int argc, char const *argv[])
         {
         case 1:
             scanPackages();
-
+            break;
+        case 2:
+            scanULD();
+            break;
+        case 3:
+            scanLIBs();
+            break;
+        case 4:
+            sendPlane();
+            break;
+        case 5:
+            addULD();
+            break;
+        case 6:
+            removePackages();
+            break;
+        case 7:
             break;
         case 0:
             quit = true;

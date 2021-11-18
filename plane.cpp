@@ -13,10 +13,16 @@ Plane::Plane(int nID, int nMW, int nNC, std::string nD) {
     ULDs.reserve(numContainers);
     openPos = nNC;
 }
-void Plane::printPlane() {
-    std::cout << "Plane " << id << " heading to " << dest << "\n";
+const void Plane::printPlane() {
+    std::cout << "\n---------------PLANE STATS---------------\n";
+    std::cout << "Plane ID: " << id << "\n";
+    std::cout << "Plane dest: " << dest << "\n";
+    std::cout << "Weight: " << currentWeight << "\tMax: " << maxWeight << "\n";
+    std::cout << "Open positions: " << openPos << "\n";
+    std::cout << "-----------------------------------------\n\n";
+
 }
-std::string Plane::getDest() {
+const std::string Plane::getDest() {
     return dest;
 }
 void Plane::addToPlane(Container & c) {
@@ -27,7 +33,7 @@ void Plane::addToPlane(Container & c) {
 int Plane::getOpenPOS() {
     return openPos;
 }
-int Plane::canAdd(Container & c) {
+const int Plane::canAdd(Container & c) {
     int newWeight = c.getWeight() + currentWeight;
     if (newWeight < maxWeight)
         return -1;
@@ -35,4 +41,7 @@ int Plane::canAdd(Container & c) {
         return newWeight - maxWeight;
     
         
+}
+int Plane::getID() {
+    return id;
 }
