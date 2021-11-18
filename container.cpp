@@ -50,6 +50,8 @@ void Container::removePackage(Package & p) {
         containerPackages.erase(it);
         currentWeight = currentWeight - p.getWeight();
         currentVolume = currentVolume - p.getVolume();
+        std::cout << "Package removed from ULD " << id << "\n\n";
+        printContainerStats();
     } else {
         std::cout << "Package not found, scan again\n";
     }
@@ -61,7 +63,7 @@ const int Container::getMaxWeight() {
     return maxWeight;
 }
 const void Container::printContainerStats() {
-    std::cout << "---------------ULD STATS---------------\n";
+    std::cout << "---------------ULD STATS---------------------\n";
     std::cout << "ULD number: " << id << "\n";
     std::cout << "Weight of ULD: " << currentWeight << "\tMax: " << maxWeight << "\n";
     std::cout << "Volume of ULD: " << currentVolume << "\tMax: " << maxVolume << "\n";
