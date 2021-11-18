@@ -28,6 +28,10 @@ g++ -std=c++2a *.cpp && ./a.out
     - Choose 1 of the destinations to add a ULD to that rotation
     - Can't add ULD to rotation if capacity has been reached
     - Can't add ULD to rotation if there are 0 open positions in the corresponding plane
+    - Input ULD information
+    - CURRENTWEIGHT,MAXWEIGHT,ID,MAXVOLUME
+    - EXAMPLE
+    - `200,5000,2337,430`
 5. Scan LIB Packages
 6. Send off a Plane
 7. Add ULD to Plane
