@@ -46,14 +46,12 @@ g++ -std=c++2a *.cpp && ./a.out
     - ID
     - EXAMPLE: `626`
     - Adds ULD to plane
-7. Remove Packages from ULD
+6. Remove Packages from ULD
     - Prints the 10 most recent packages added to ULD to simulate not being able to see the packages in the very back of the ULD
     - Input package information 
     - ID,ZIPCODE,WEIGHT,VOLUME
     - EXAMPLE: `412312,12345,5,2`
     - Removed packages are moved to LIB
-9. Run Tests
-    - NOT COMPLETE
 
 # How to make this better
 1. Add hazmat packages
