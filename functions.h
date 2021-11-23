@@ -51,7 +51,6 @@ void printOptions() {
     std::cout << "Enter 4 to send off a plane" << "\n";
     std::cout << "Enter 5 to add ULD to plane" << "\n";
     std::cout << "Enter 6 to remove packages from ULD" << "\n";
-    std::cout << "Enter 7 to run tests" << "\n";
     std::cout << "Enter 0 to quit" << "\n";
     // airport.printAllContainers();
 }

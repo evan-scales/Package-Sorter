@@ -41,8 +41,6 @@ int main(int argc, char const *argv[])
         case 6:
             removePackages();
             break;
-        case 7:
-            break;
         case 0:
             quit = true;
             std::cout << "Exiting" << "\n";
