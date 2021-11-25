@@ -6,13 +6,13 @@
 class Package {
  public:
    // Constructor
-   Package(std::string, std::string, int, int);
+   Package(std::string, std::string, int, double);
 
    // Member Functions
    std::string getID() const;
    std::string getZip() const;
    int getWeight() const;
-   int getVolume() const;
+   double getVolume() const;
    bool getHazmat() const;
    void printPackage() const;
    int getTIR() const;
@@ -22,7 +22,8 @@ class Package {
    bool operator==(const Package &) const;
 
  private:
-    int weight, volume, tir;
+    int weight, tir;
+    double volume;
     std::string zipcode, id;
     bool hazmat;
 

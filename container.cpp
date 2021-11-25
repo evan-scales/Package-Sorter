@@ -1,7 +1,7 @@
 // Copyright 2021 Evan Scales
 #include "./container.h"
 
-Container::Container(int nCW, int nMW, int nID, int nMV) {
+Container::Container(int nCW, int nMW, int nID, double nMV) {
     currentWeight = nCW;
     maxWeight = nMW;
     id = nID;
@@ -30,12 +30,12 @@ int Container::getID() const {
 int Container::getWeight() const {
     return currentWeight;
 }
-int Container::getVolume() const {
+double Container::getVolume() const {
     return currentVolume;
 }
 bool Container::canAdd(const Package & p)const {
     int newWeight = p.getWeight() + currentWeight;
-    int newVol = p.getVolume() + currentVolume;
+    double newVol = p.getVolume() + currentVolume;
     if (newWeight < maxWeight && newVol < maxVolume)
         return true;
     else
@@ -53,7 +53,7 @@ void Container::removePackage(const Package & p) {
         std::cout << "Package not found, scan again\n";
     }
 }
-int Container::getMaxVolume() const {
+double Container::getMaxVolume() const {
     return maxVolume;
 }
 int Container::getMaxWeight() const {

@@ -151,7 +151,7 @@ void Airport::initRot() {
                 else
                     id = rand() % 3000;
             }
-            Container con(200, 5000, id, 420);
+            Container con(200, 5000, id, 420.0);
             q.push(con);
             
         }
@@ -195,7 +195,7 @@ void Airport::scanLIB() {
                     std::string id = vect[0];
                     std::string zip = vect[1];
                     int weight = std::stoi(vect[2]);
-                    int volume = std::stoi(vect[3]);
+                    double volume = std::stod(vect[3]);
 
                     Package p(id, zip, weight, volume);
                     auto it = std::find(lib.begin(), lib.end(), p);
@@ -258,7 +258,8 @@ void Airport::scanULD() {
     // std::cout << "rot size: " << rotP->size() << "\n";
     if (plane->getOpenPOS() != 0 && rotP->size() != cap) {
         bool stop = false;
-        int cw, mw, id, mv;
+        int cw, mw, id;
+        double mv;
         while (!stop) {
             std::cout << "Scan new ULD CURRENTWEIGHT,MAXWEIGHT,ID,MAXVOLUME\n";
             std::cout << "Enter O(or o) to stop and return to options\n";
@@ -278,7 +279,7 @@ void Airport::scanULD() {
                 cw = std::stoi(vect[0]);
                 mw = std::stoi(vect[1]);
                 id = std::stoi(vect[2]);
-                mv = std::stoi(vect[3]);
+                mv = std::stod(vect[3]);
             } catch (...) {
                 std::cout << "ERROR: Not a valid ULD\n";
             }

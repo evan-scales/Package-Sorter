@@ -8,7 +8,7 @@
 class Container {
  public:
    // Constructor
-   Container(int, int, int, int);
+   Container(int, int, int, double);
 
    // Member functions
    void printContainerRecent() const;
@@ -17,14 +17,15 @@ class Container {
    int getID() const;
    int getWeight() const;
    int getMaxWeight() const;
-   int getMaxVolume() const;
-   int getVolume() const;
+   double getMaxVolume() const;
+   double getVolume() const;
    bool canAdd(const Package &) const;
    void removePackage(const Package &);
    bool isEmpty() const;
 
  private:
-   int currentWeight, maxWeight, id, currentVolume, maxVolume;
+   int currentWeight, maxWeight, id;
+   double currentVolume, maxVolume;
    std::vector<Package> containerPackages;
 };
 

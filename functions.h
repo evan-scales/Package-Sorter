@@ -24,6 +24,7 @@ void scanULD();
 void addULD();
 void removePackages();
 void sendPlane();
+void makeRandomP();
 
 // Start Functions
 void greet() {
@@ -57,7 +58,7 @@ void scanPackages() {
                 std::string id = vect[0];
                 std::string zip = vect[1];
                 int weight = std::stoi(vect[2]);
-                int volume = std::stoi(vect[3]);
+                double volume = std::stod(vect[3]);
 
                 Package p(id, zip, weight, volume);
                 airport.addPackage(p);
@@ -84,6 +85,9 @@ void removePackages() {
 }
 void sendPlane() {
     airport.sendPlane();
+}
+void makeRandomP() {
+
 }
 
 #endif

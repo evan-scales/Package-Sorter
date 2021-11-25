@@ -1,7 +1,7 @@
 // Copyright 2021 Evan Scales
 #include "./package.h"
 
-Package::Package(std::string nID, std::string nZ, int nW, int nV) {
+Package::Package(std::string nID, std::string nZ, int nW, double nV) {
     id = nID;
     zipcode = nZ;
     weight = nW;
@@ -23,7 +23,7 @@ std::string Package::getZip() const {
 int Package::getWeight() const {
     return weight;
 }
-int Package::getVolume() const {
+double Package::getVolume() const {
     return volume;
 }
 int Package::getTIR() const {
