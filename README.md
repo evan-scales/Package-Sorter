@@ -1,5 +1,5 @@
 # Package-Sorter 1.0
-EXTREMLY simple version of UPS CLT Air Hub
+EXTREMELY simple version of UPS CLT Air Hub
 
 Unfortunately just a console application, so you can't actually "scan" a package :(
 
