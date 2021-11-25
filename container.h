@@ -7,28 +7,24 @@
 
 class Container {
  public:
-    // Constructors
-    Container();
-    explicit Container(int, int, int, int);
+   // Constructor
+   Container(int, int, int, int);
 
-   //  bool operator<(const Container &) const;
-
-    // Member functions
-    const void printContainerRecent();
-    const void printContainerStats();
-    void addToContainer(Package &);
-    const int getID();
-    const int getWeight();
-    const int getMaxWeight();
-    const int getMaxVolume();
-    const int getVolume();
-    const bool canAdd(Package &);
-    void removePackage(Package &);
-    bool isEmpty();
+   // Member functions
+   void printContainerRecent() const;
+   void printContainerStats() const;
+   void addToContainer(const Package &);
+   int getID() const;
+   int getWeight() const;
+   int getMaxWeight() const;
+   int getMaxVolume() const;
+   int getVolume() const;
+   bool canAdd(const Package &) const;
+   void removePackage(const Package &);
+   bool isEmpty() const;
 
  private:
-    int currentWeight, maxWeight, id, currentVolume, maxVolume;
-   //  std::map<std::string, Package> consMap;
+   int currentWeight, maxWeight, id, currentVolume, maxVolume;
    std::vector<Package> containerPackages;
 };
 

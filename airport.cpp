@@ -8,46 +8,28 @@
 #include <vector>
 
 Airport::Airport() {
-    // TODO somehow make this work
+    // TODO make user able to add their own planes
 }
 Airport::Airport(int code) {
-    if (code == 1) {  // CLT airport
-        // Set the zipmap
-        if (!setMap(zipMap, "./cltZips.csv"))
-            std::cout << "Zipmap loading failed\n";
-        // Make the planes
-        // Philly and Louis plane
-        Plane philly(1, 87000, 17, "PHL");
-        Plane louis(2, 180000, 39, "SDK");
-        cap = 4;
-        nono = cap;
-        planes[philly.getDest()] = philly;
-        planes[louis.getDest()] = louis;
-
-        // printPlanes(planes);
-        initRot();
-        // for(auto const pair : zipMap) {
-        //     std::cout << "{" << pair.first << ": " << pair.second << "}\n";
-        // }
+    switch (code) {
+    case 1:
+        setCLT();
+        break;
     }
 }
 void Airport::setCLT() {
-    // // CLT airport
-    // // Set the zipmap
-    // if (!setMap(zipMap, "./cltZips.csv"))
-    //     std::cout << "Zipmap loading failed\n";
-    // // Make the planes
-    // // Philly and Louis plane
-    // Plane philly(1, 87000, 17, "PHL");
-    // Plane louis(2, 180000, 39, "SDK");
+    // Set the zipmap
+    if (!setMap(zipMap, "./cltZips.csv"))
+        std::cout << "Zipmap loading failed\n";
+    // Make the planes
+    // Philly and Louis plane
+    Plane philly(1, 87000, 17, "PHL");
+    Plane louis(2, 180000, 39, "SDK");
+    cap = 4;
+    planes[philly.getDest()] = philly;
+    planes[louis.getDest()] = louis;
 
-    // // planes.push_back(philly);
-    // // planes.push_back(louis);
-    // // printPlanes(planes);
-    // // for(auto const pair : zipMap) {
-    // //     std::cout << "{" << pair.first << ": " << pair.second << "}\n";
-    // // }
-    
+    initRot();
 }
 bool Airport::setMap(std::unordered_map<std::string,std::string> & map, const std::string file) {
     std::ifstream in(file);
@@ -69,10 +51,12 @@ bool Airport::setMap(std::unordered_map<std::string,std::string> & map, const st
         return false;
     }
 }
-
-void Airport::printPlanes(std::vector<Plane> vect) {
-    for (auto p : vect) {
-        p.printPlane();
+void Airport::printPlanes(std::unordered_map<std::string, Plane> planes) {
+     for (auto p : planes)
+        p.second.printPlane();
+    if (planes.empty()) {
+        std::cout << "No planes on ramp\nReturning to menu\n";
+        return;
     }
 }
 void Airport::addPackage(Package & p) {
@@ -133,7 +117,7 @@ void Airport::addPackage(Package & p) {
         }
     }
 }
-std::string Airport::determinePlane(Package & p) {
+std::string Airport::determinePlane(const Package & p) {
     std::string dest;
     std::string zip = p.getZip();
     // Only need first digit to determine which plane
@@ -149,10 +133,10 @@ std::string Airport::determinePlane(Package & p) {
 }
 void Airport::initRot() {
     std::string id, zip;
-    id = "1231231";
-    zip = "12345";
-    Package test(id,zip,1,1);
-    lib.push_back(test);
+    // id = "1231231";
+    // zip = "12345";
+    // Package test(id,zip,1,1);
+    // lib.push_back(test);
     srand(time(NULL));
     for (auto it : planes) {
         std::queue<Container> q;
@@ -172,14 +156,14 @@ void Airport::initRot() {
             
         }
         std::string key = it.second.getDest();
-        std::cout << "Key: " << key << "\n";
+        // std::cout << "Key: " << key << "\n";
         rot[key] = q;
     }
 
-    // print all container ids
-    for (auto x : conIDSet)
-        std::cout << x << " ";
-    std::cout << "\n";
+    // // print all container ids
+    // for (auto x : conIDSet)
+    //     std::cout << x << " ";
+    // std::cout << "\n";
 }
 void Airport::printAllContainers() {
     for (auto it : rot) {
@@ -192,11 +176,11 @@ void Airport::printAllContainers() {
 }
 void Airport::scanLIB() {
     bool scan = true;
-    std::cout << "Enter O(or o) to stop and return to options\n";
     while (scan) {
         if (!lib.empty()) {
             for (auto p : lib)
                 p.printPackage();
+            std::cout << "Enter O(or o) to stop and return to options\n";
             std::cout << "Scan package ID,ZIPCODE,WEIGHT,VOLUME\n";
             std::string input;
             std::cin >> input;
@@ -237,9 +221,9 @@ void Airport::scanLIB() {
     }
     
 }
-void Airport::scanULD() { // DONE
+void Airport::scanULD() {
     std::string dest;
-    std::cout << "Choose one of the dests\n";
+    std::cout << "Choose one of the destinations\n";
     int i = 1;
     for (auto it : planes) {
         std::cout << "Enter " << i++ << " for " << it.second.getDest() << "\n"; 
@@ -284,15 +268,20 @@ void Airport::scanULD() { // DONE
                 std::cout << "Returning to menu\n";
                 return;
             }
-            std::string token = "";
-            std::stringstream s_line(input);
-            std::vector<std::string> vect;
-            while (getline(s_line, token, ','))
-                vect.push_back(token);
-            cw = std::stoi(vect[0]);
-            mw = std::stoi(vect[1]);
-            id = std::stoi(vect[2]);
-            mv = std::stoi(vect[3]);
+
+            try {
+                std::string token = "";
+                std::stringstream s_line(input);
+                std::vector<std::string> vect;
+                while (getline(s_line, token, ','))
+                    vect.push_back(token);
+                cw = std::stoi(vect[0]);
+                mw = std::stoi(vect[1]);
+                id = std::stoi(vect[2]);
+                mv = std::stoi(vect[3]);
+            } catch (...) {
+                std::cout << "ERROR: Not a valid ULD\n";
+            }
             if (conIDSet.find(id) == conIDSet.end()) {
                 stop = true;
                 conIDSet.insert(id);
@@ -445,13 +434,7 @@ void Airport::removePULD(int choice, int sID) {
     }
 }
 void Airport::sendPlane() {
-    // Print all plane stats
-    for (auto p : planes)
-        p.second.printPlane();
-    if (planes.empty()) {
-        std::cout << "No planes on ramp\nReturning to menu\n";
-        return;
-    }
+    printPlanes(planes);
     int pID;
     std::cout << "Enter the planes ID to send it to its dest\n";
     std::cout << "Enter O(or o) to stop and return to options\n";

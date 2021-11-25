@@ -28,22 +28,7 @@ void sendPlane();
 // Start Functions
 void greet() {
     std::cout << "Welcome to package sorter 1.0" << "\n";
-    // std::cout << "Please select your airport" << "\n";
 }
-// void selectAirport() {
-//     std::cout << "Enter 1 for CLT" << "\n";
-//     bool option = false;
-//     while (!option) {
-//         int input;
-//         std::cin >> input;
-//         if (input == 1) {
-//             airport = Airport(1);
-//             option = true;
-//         } else {
-//             std::cout << "Please choose an airport\n";
-//         }
-//     }
-// }
 void printOptions() {
     std::cout << "Enter 1 to scan packages" << "\n";
     std::cout << "Enter 2 to scan new ULD" << "\n";
@@ -52,7 +37,6 @@ void printOptions() {
     std::cout << "Enter 5 to add ULD to plane" << "\n";
     std::cout << "Enter 6 to remove packages from ULD" << "\n";
     std::cout << "Enter 0 to quit" << "\n";
-    // airport.printAllContainers();
 }
 void scanPackages() {
     bool scan = true;
@@ -76,12 +60,10 @@ void scanPackages() {
                 int volume = std::stoi(vect[3]);
 
                 Package p(id, zip, weight, volume);
-                // p.printPackage();
                 airport.addPackage(p);
             } catch (...) {
                 std::cout << "ERROR: Not a valid package\n";
             }
-            
         } else {
             std::cout << "Returning to menu\n";
             scan = false;
@@ -103,7 +85,5 @@ void removePackages() {
 void sendPlane() {
     airport.sendPlane();
 }
-
-
 
 #endif

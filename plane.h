@@ -7,17 +7,17 @@
 
 class Plane {
  public:
-    // Constructors
-    Plane();
-    explicit Plane(int, int, int, std::string);
+   // Constructor
+   Plane();
+   explicit Plane(int, int, int, std::string);
 
-    // Member functions
-    const void printPlane();
-    const std::string getDest();
-    int getOpenPOS();
-    void addToPlane(Container &);
-    const int canAdd(Container &);
-    int getID();
+   // Member functions
+   void printPlane() const;
+   std::string getDest() const;
+   int getOpenPOS() const;
+   void addToPlane(const Container &);
+   int canAdd(const Container &) const;
+   int getID() const;
 
 
  private:

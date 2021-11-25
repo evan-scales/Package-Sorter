@@ -1,11 +1,6 @@
 // Copyright 2021 Evan Scales
 #include "./package.h"
 
-Package::Package() {
-    id = weight = 0;
-    zipcode = "0";
-    hazmat = false;
-}
 Package::Package(std::string nID, std::string nZ, int nW, int nV) {
     id = nID;
     zipcode = nZ;
@@ -13,36 +8,34 @@ Package::Package(std::string nID, std::string nZ, int nW, int nV) {
     volume = nV;
     tir = 0;
 }
-const void Package::printPackage() {
+void Package::printPackage() const {
     std::cout << "Tracking number: " << id << " Shipping to (zipcode): " << zipcode << " Weight: " << weight << " Volume (cubic feet): " << volume << "\n";
 }
-const std::string Package::getID() {
+std::string Package::getID() const {
     return id;
 }
-const bool Package::getHazmat() {
+bool Package::getHazmat() const {
     return hazmat;
 }
-const std::string Package::getZip() {
+std::string Package::getZip() const {
     return zipcode;
 }
-const int Package::getWeight() {
+int Package::getWeight() const {
     return weight;
 }
-const int Package::getVolume() {
+int Package::getVolume() const {
     return volume;
 }
-const int Package::getTIR() {
+int Package::getTIR() const {
     return tir;
 }
 void Package::upTIR() {
     tir++;
 }
-
 bool Package::operator==(const Package & rhs) const {
     if ((id == rhs.id) && (zipcode == rhs.zipcode) && (weight == rhs.weight) && (volume == rhs.volume))
         return true;
-    else
-        return false;
+    return false;
 }
 void Package::resetTIR() {
     tir = 0;

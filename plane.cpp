@@ -2,7 +2,7 @@
 #include "./plane.h"
 
 Plane::Plane() {
-    // TODO make plane default idk tbh
+    // Make it so user can make their own plane
 }
 Plane::Plane(int nID, int nMW, int nNC, std::string nD) {
     id = nID;
@@ -13,7 +13,7 @@ Plane::Plane(int nID, int nMW, int nNC, std::string nD) {
     ULDs.reserve(numContainers);
     openPos = nNC;
 }
-const void Plane::printPlane() {
+void Plane::printPlane() const {
     std::cout << "\n---------------PLANE STATS---------------\n";
     std::cout << "Plane ID: " << id << "\n";
     std::cout << "Plane dest: " << dest << "\n";
@@ -22,18 +22,18 @@ const void Plane::printPlane() {
     std::cout << "-----------------------------------------\n\n";
 
 }
-const std::string Plane::getDest() {
+std::string Plane::getDest() const {
     return dest;
 }
-void Plane::addToPlane(Container & c) {
+void Plane::addToPlane(const Container & c) {
     openPos--;
     currentWeight += c.getWeight();
     ULDs.push_back(c);
 }
-int Plane::getOpenPOS() {
+int Plane::getOpenPOS() const {
     return openPos;
 }
-const int Plane::canAdd(Container & c) {
+int Plane::canAdd(const Container & c) const {
     int newWeight = c.getWeight() + currentWeight;
     if (newWeight < maxWeight)
         return -1;
@@ -42,6 +42,6 @@ const int Plane::canAdd(Container & c) {
     
         
 }
-int Plane::getID() {
+int Plane::getID() const {
     return id;
 }

@@ -2,27 +2,21 @@
 
 #include <iostream>
 #include "./functions.h"
-// #include "./package.h"
-// #include "./container.h"
-// #include "./plane.h"
 #include <unordered_map>
 #include <string>
 #include <iostream>
 
 using std::string;
 
-
 int main(int argc, char const *argv[])
 {
     bool quit = false;
     greet();
-    // selectAirport();
     while(!quit) {
         printOptions();
         int choice;
         std::cin >> choice;
-        switch (choice)
-        {
+        switch (choice) {
         case 1:
             scanPackages();
             break;
@@ -49,6 +43,5 @@ int main(int argc, char const *argv[])
                 std::cout << "Invalid option, try again" << "\n";
         }
     }
-
     return 0;
 }
