@@ -5,6 +5,10 @@ Unfortunately just a console application, so you can't actually "scan" a package
 
 Built to easily incorporate more airports, would just need to tweak how to determine a packages plane
 
+Program takes in package information and returns to user which ULD to add package to
+
+Real life implementation could be used to automatically sort packages on a conveyer belt 
+
 # Compiling and Running
 ```
 // Windows / Linux
